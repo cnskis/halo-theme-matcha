@@ -10,10 +10,10 @@ halo 主题开发文档可查阅：<https://docs.halo.run/2.0.0-SNAPSHOT/develop
 
 下载仓库代码，上传即可。
 
-需要插件：
-搜索组件 <https://halo.run/store/apps/app-DlacW>
-评论组件 <https://halo.run/store/apps/app-YXyaD>
-链接管理 <>
+需要插件： 
+搜索组件 <https://halo.run/store/apps/app-DlacW> 
+评论组件 <https://halo.run/store/apps/app-YXyaD> 
+链接管理 <https://halo.run/store/apps/app-hfbQg> 
 
 # 鸣谢
 
