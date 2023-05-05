@@ -1,0 +1,30 @@
+
+
+<!--页面头部-->
+<th:block th:replace="~{modules/header}" />
+
+<div class="container">
+  <div class="col-12" id="main" role="main">
+
+    <h2 class="section-title">大家</h2>
+    <section class="indexlink">
+        <th:block th:each="group : ${groups}">
+            <a th:each="link : ${group.links}" th:href="${link.spec.url}" target="_blank" th:remove="tag">
+              
+              <div class="indexlink-item">
+                <a th:href="${link.spec.url}" target="_blank">
+                  <h2 th:text="${link.spec.displayName}"></h2>
+                  <p th:text="${link.spec.description}"></p>
+                  
+                </a>
+                <img style="text-align: center;" width="100px" height="100px" th:src="${link.spec.logo}" th:alt="${link.spec.displayName}">
+              </div>
+              
+            </a>
+        </th:block>
+    </section>
+
+
+
+<!--页面底部-->
+<th:block th:replace="~{modules/footer}" />

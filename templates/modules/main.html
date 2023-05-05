@@ -1,0 +1,72 @@
+
+<div class="container">
+    <div class="col-12" id="main" role="main">
+    
+    <h2 class="section-title">首页导航</h2>
+    <section class="indexlink">
+        
+            <div class="indexlink-item">
+                <a th:href="${theme.config.nav.first_link}" target="_blank">
+                    <h2 th:text="${theme.config.nav.first_title}"></h2>
+                    <p th:text="${theme.config.nav.first_des}"></p>
+                </a>
+            </div>
+            <div class="indexlink-item">
+                <a th:href="${theme.config.nav.second_link}" target="_blank">
+                    <h2 th:text="${theme.config.nav.second_title}"></h2>
+                    <p th:text="${theme.config.nav.second_des}"></p>
+                </a>
+            </div>
+            <div class="indexlink-item">
+                <a th:href="${theme.config.nav.third_link}" target="_blank">
+                    <h2 th:text="${theme.config.nav.third_title}"></h2>
+                    <p th:text="${theme.config.nav.third_des}"></p>
+                </a>
+            </div>
+       
+        
+    </section>
+
+<!-- 文章列表 -->
+<h2 class="section-title">最新文章</h2>
+<section class="latest-post">
+
+    <div>
+        <article th:each="post : ${posts.items}" class="post post-atmain" itemscope itemtype="http://schema.org/BlogPosting">
+            <div class="post-text">
+                <h2 class="post-title" itemprop="name headline"><a itemprop="url" th:href="${post.status.permalink}" th:text="${post.spec.title}"></a></h2>
+                <ul class="post-meta">
+                    <li><time th:datetime="${post.spec.publishTime}" itemprop="datePublished"><span th:text="|发布于 ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}|" th:remove="tag"></span></time></li>
+                    <li><a th:href="@{${post.categories[0].status.permalink}}" th:text="${post.categories[0].spec.displayName}"></a></li>
+                    <li th:text="|${post.stats.visit} 次阅读|"></li>
+                    <li itemprop="interactionCount"><a th:href="|${post.status.permalink}#comments|" th:text="|${post.stats.comment} 评论|"></a></li>
+                </ul>
+                <div class="post-content" itemprop="articleBody">
+                    <span th:text="${post.status.excerpt}"></span>
+                    <p class="more"><a th:href="${post.status.permalink}" th:text="${post.spec.title}">继续阅读</a></p>
+                </div>
+            </div>
+
+
+        </article>
+        
+
+        <div style="margin: 0 auto;text-align: center;">
+            <div th:if="${posts.hasPrevious() || posts.hasNext()}">
+              <a th:if="${posts.hasPrevious()}"
+                th:href="@{${posts.prevUrl}}"
+              >
+                <span>上一页</span>
+              </a>
+              <span th:text="${posts.page} +' / '+ ${posts.totalPages}"></span>
+              <a th:if="${posts.hasNext()}"
+                th:href="@{${posts.nextUrl}}"
+              >
+                <span>下一页</span>
+              </a>
+            </div>
+          </div>
+      </div>
+</section>
+    
+</body>

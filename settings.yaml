@@ -1,0 +1,59 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: theme-matcha-setting
+spec:
+  forms:
+
+    - group: nav
+      label: 首页导航
+      formSchema:
+        - $formkit: text
+          name: first_title
+          label: 第一个标题
+          value: 这里是标题
+        - $formkit: text
+          name: first_des
+          label: 第一个描述
+          value: 这里是描述
+        - $formkit: text
+          name: first_link
+          label: 第一个跳转链接
+          value: 这里是跳转链接
+        - $formkit: text
+          name: second_title
+          label: 第二个标题
+          value: 这里是标题
+        - $formkit: text
+          name: second_des
+          label: 第二个描述
+          value: 这里是描述
+        - $formkit: text
+          name: second_link
+          label: 第二个跳转链接
+          value: 这里是跳转链接
+        - $formkit: text
+          name: third_title
+          label: 第三个标题
+          value: 这里是标题
+        - $formkit: text
+          name: third_des
+          label: 第三个描述
+          value: 这里是描述
+        - $formkit: text
+          name: third_link
+          label: 第三个跳转链接
+          value: 这里是跳转链接
+
+    - group: beian
+      label: 备案设置
+      formSchema:
+        - $formkit: text
+          name: icp_text
+          label: ICP备案号
+          value: 这里是备案号
+        - $formkit: text
+          name: icp_link
+          label: ICP备案跳转链接
+          value: https://beian.miit.gov.cn/
+    

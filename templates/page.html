@@ -1,0 +1,37 @@
+<!--页面头部-->
+<th:block th:replace="~{modules/header}" />
+
+<div class="container">
+  <div class="col-12" id="main" role="main">
+
+    <article class="post post-atpage" itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="post-header">
+      <h1 class="post-title post-title-atpage" itemprop="name headline">
+        <span th:text="${singlePage.spec.title}" th:remove="tag"></span>
+        <button class="focus-mode-btn" title="专注模式"><span class="iconfont">&#xe869;</span></button>
+      </h1>
+        <ul class="post-meta post-meta-atpage">
+          <li><time th:datetime="${singlePage.spec.publishTime}" itemprop="datePublished"><span th:text="|发布于 ${#dates.format(singlePage.spec.publishTime,'yyyy-MM-dd')}|" th:remove="tag"></span></time></li>
+          <li></li>
+          <li th:text="|${singlePage.stats.visit} 次阅读|"></li>
+        </ul>
+      </div>
+<div class="post-content" itemprop="articleBody">
+
+  <!-- <h1 th:text="${post.spec.title}"></h1> -->
+  <div th:utext="${singlePage.content.content}"> </div>
+
+
+</div>
+      
+  </article>
+
+                            
+<!-- <button class="focus-mode-btn" id="focus-mode-close" title="专注模式"><span class="iconfont">&#xe869;</span></button> -->
+</div>
+
+
+
+<!--页面底部-->
+<th:block th:replace="~{modules/footer}" />
+

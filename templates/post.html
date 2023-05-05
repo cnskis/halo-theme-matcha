@@ -1,0 +1,68 @@
+<!--页面头部-->
+<th:block th:replace="~{modules/header}" />
+
+<div class="container">
+  <div class="col-12" id="main" role="main">
+
+    <article class="post post-atpage" itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="post-header">
+        <h1 class="post-title post-title-atpage" itemprop="name headline">
+          <span th:text="${post.spec.title}" th:remove="tag"></span>
+          <button class="focus-mode-btn" title="专注模式"><span class="iconfont">&#xe869;</span></button>
+        </h1>
+        <ul class="post-meta post-meta-atpage">
+          <li><time th:datetime="${post.spec.publishTime}" itemprop="datePublished"><span th:text="|发布于 ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}|" th:remove="tag"></span></time></li>
+          <li><a th:href="@{${post.categories[0].status.permalink}}" th:text="${post.categories[0].spec.displayName}"></a></li>
+          <li th:text="|${post.stats.visit} 次阅读|"></li>
+        </ul>
+      </div>
+<div class="post-content" itemprop="articleBody">
+
+  <!-- <h1 th:text="${post.spec.title}"></h1> -->
+  <div th:utext="${post.content.content}"> </div>
+
+
+</div>
+      <p itemprop="keywords" class="tags-list post-tags-list">
+        <span class="tags-title">标签：</span>
+        <div class="mt-2 flex flex-wrap gap-2" th:with="tags = ${tagFinder.list(1,50)}" th:remove="tag">
+          <a
+            th:each="tag : ${tags}"
+            th:href="@{${tag.status.permalink}}"
+            th:title="${tag.spec.displayName}"
+            class="rounded bg-gray-100 px-1 py-0.5 text-sm text-gray-900 hover:bg-gray-200 dark:bg-slate-600 dark:text-slate-50 dark:hover:bg-slate-700 dark:hover:text-slate-100"
+          >
+            <th:block th:text="|#${tag.spec.displayName}|" />
+            <sup th:text="${tag.status.visiblePostCount}"></sup>
+          </a>
+        </div>
+      </p>
+  </article>
+
+
+
+  <hr class="my-10 dark:border-slate-700" id="comments" />
+  <!-- https://github.com/halo-sigs/plugin-comment-widget -->
+  <div id="comments-area"
+    th:if="${pluginFinder.available('PluginCommentWidget')} and ${post.spec.allowComment} and ${site.comment.enable}"
+  >
+  <script>
+    
+  </script>
+    <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50">评论</h2>
+    <halo:comment
+      group="content.halo.run"
+      kind="Post"
+      th:attr="name=${post.metadata.name}"
+      colorScheme="localStorage.getItem('color')"
+    />
+  </div>
+                            
+
+</div>
+
+
+
+<!--页面底部-->
+<th:block th:replace="~{modules/footer}" />
+

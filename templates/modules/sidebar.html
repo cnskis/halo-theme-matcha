@@ -1,0 +1,45 @@
+<!--
+<aside th:fragment="sidebar (prepend)" class="col-span-1 hidden h-full flex-col gap-6 sm:flex">
+  <th:block th:with="widgets = ${theme.config.sidebar.widgets} ">
+    <th:block th:if="${prepend != null}">
+      <th:block th:replace="${prepend}" />
+    </th:block>
+    <th:block th:each="widget : ${widgets}">
+      <th:block th:replace="~{'modules/widgets/'+${widget.value}}" />
+    </th:block>
+  </th:block>
+</aside>
+-->
+  <!-- 侧边栏 -->
+  <aside id="sidebar" class="sidebar" role="complementary">
+    <section class="widget widget-nav sidebar-nav">
+      <header id="header" class="header" th:text="${site.title}">
+        <div class="site-name">
+          <a id="logo" th:href="${site.url}" class="site-title" th:text="${site.title}">主标题</a>
+          <p class="description site-description" th:text="${site.subtitle}">副标题</p>
+        </div>
+      </header>
+      
+      <div th:with="menu = ${menuFinder.getPrimary()}">
+        <ul th:with="menuItems = ${menu.menuItems}" class="widget-list">
+          <!--<li><a href="/" rel="section">首页</a></li>-->
+              <li th:each="menuItem : ${menuItems}">
+                  <a 
+                    th:href="@{${menuItem.status.href}}" 
+                    th:text="${menuItem.status.displayName}" 
+                    th:class="${#annotations.get(menuItem, 'icon')}"
+                  >
+                  </a>
+              </li>
+        </ul>
+      </div>
+    </section>
+    <!-- 版权信息 -->
+    <section class="widget sidebar-foot">
+      <ul class="widget-list">
+        <li>Theme <a rel="nofollow" target="_blank" href="https://github.com/BigCoke233/matcha" class="no-linkTarget">Matcha</a> by <a  target="_blank" href="https://github.com/BigCoke233/" class="no-linkTarget">Eltrac</a></li>
+        <li>Theme <a rel="nofollow" target="_blank" href="https://blog.shikangsi.cn" class="no-linkTarget">Matcha</a> by <a  target="_blank" href="https://blog.shikangsi.cn" class="no-linkTarget">ShiKangsi</a></li>
+        <li>Powered by <a rel="nofollow" target="_blank" href="https://halo.run" class="no-linkTarget">Halo</a></li>
+      </ul>
+    </section>
+  </aside>

@@ -1,0 +1,47 @@
+
+<footer id="footer" role="contentinfo">
+	&copy; <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" th:remove="tag" /> <a href="/" th:text="${site.title}"></a>.
+  <a th:href="${theme.config.beian.icp_link}"
+      th:text="${theme.config.beian.icp_text}"
+  ></a>
+  <halo:footer />
+	
+	<!-- 返回顶部按钮 -->
+	<button id="back2top" title="返回顶部"><span class="iconfont">&#xe749;</span></button>
+</footer>
+</div>
+</div>
+
+<footer id="script">
+  <script>
+    siteurl="https://blog.guhub.cn/";
+    pjaxCallback=function(){
+      if($('[data-github]').length) {
+        BracketDown.core()
+        }
+    };
+    allowDarkMode=true;
+  </script>
+  <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery.lazy/1.7.11/jquery.lazy.min.js"></script>
+  <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bigfoot/2.1.4/bigfoot.min.js"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+  <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/fluidbox/2.0.5/js/jquery.fluidbox.min.js"></script>
+  <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.18.2/tocbot.min.js"></script>
+  <script th:src="@{/assets/prism/prism.js}"></script>
+  <script th:src="@{/assets/toaster/toaster.js}"></script>
+  <script th:src="@{/assets/smoothscroll/smoothscroll.js}"></script>
+  <script th:src="@{/assets/matcha/matcha.comment.js}"></script>
+  <script th:src="@{/assets/matcha/matcha.js}"></script>
+  <!--
+  <script type="text/javascript" src="https://blog.guhub.cn/usr/plugins/Meting/assets/Meting.min.js?v=2.1.2"></script>
+  <script src="https://blog.guhub.cn/usr/plugins/BracketDown/assets/details-element-polyfill.js"></script>
+
+   <script src="https://blog.guhub.cn/usr/plugins/BracketDown/assets/github-card.js"></script>
+   <script src="https://blog.guhub.cn/usr/plugins/ExSearch/assets/ExSearch-6e577ac4e0.js"></script>
+   -->
+</footer>
+
+</body>
+</html>

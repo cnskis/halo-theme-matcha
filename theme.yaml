@@ -1,0 +1,17 @@
+apiVersion: v1alpha1
+kind: Theme
+metadata:
+  name: theme-matcha
+spec:
+  displayName: matcha
+  author:
+    name: ShiKangsi
+    website: https://blog.shikangsi.cn
+  description: 移植自matcha
+  logo: https://halo.run/logo
+  website: https://github.com/cnskis/theme-matcha
+  repo: https://github.com/cnskis/theme-matcha.git
+  settingName: "theme-matcha-setting"
+  configMapName: "theme-matcha-configMap"
+  version: 1.0.0
+  require: ">=2.0.0"

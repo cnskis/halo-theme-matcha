@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="zh-cmn-Hans-CN-Latn-pinyin">
+<head>
+    <meta charset="utf-8">
+    <!-- IE 8浏览器的页面渲染方式 & 默认使用极速内核：针对国内浏览器产商 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <!-- 自适应 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <!-- 关闭百度转码 -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title th:text="${site.title}"></title>
+    <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/bigfoot/2.1.4/bigfoot-default.min.css" />
+    <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/prism/1.27.0/themes/prism.min.css" />
+    <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/prism/1.27.0/plugins/toolbar/prism-toolbar.min.css" />
+    <link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/prism/1.27.0/plugins/line-numbers/prism-line-numbers.min.css" />
+    <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fluidbox/2.0.5/css/fluidbox.min.css" />
+    <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.18.2/tocbot.css" />
+
+    <link rel="stylesheet" th:href="@{/assets/toaster/toaster.css?v={version}(version=${theme.spec.version})}" />
+    <link rel="stylesheet" th:href="@{/assets/matcha/matcha.css?v={version}(version=${theme.spec.version})}" />
+    <!-- <link rel="stylesheet" href="https://blog.guhub.cn/usr/plugins/CopyDog/style.css"> -->
+    <style th:inline="text">
+    @font-face {
+      font-family: 'iconfont';
+      src: url('[[@{/assets/iconfont/iconfont.woff2}]]') format('woff2'),
+      url('[[@{/assets/iconfont/iconfont.woff}]]') format('woff'),
+      url('[[@{/assets/iconfont/iconfont.ttf}]]') format('truetype');
+      }
+      </style>
+      <!-- <meta name="description" content="我从虚幻中惊醒" /> -->
+      <!--备用
+      <link rel="stylesheet" th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}" />
+      <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
+      <th:block th:if="${head != null}">
+        <th:block th:replace="${head}" />
+      </th:block>
+      <script>
+        
+      </script>
+      -->
+    <!--
+    <style>
+        :root {
+            --theme-color: ;
+        }
+    </style>
+-->
+  <style>
+        :root {
+            --theme-color: #c5c56a;
+        }
+    </style>
+</head>
+<body>
+    <th:block th:replace="~{modules/sidebar}" />
+      <!-- 工具栏 -->
+      <div id="helpbar">
+        <button id="light-switch" title="开关灯">
+            <span class="iconfont">&#xe7ac;</span>
+        </button>
+        <button class="search-form-input" title="搜索">
+            <span class="iconfont" onclick="javascript:SearchWidget.open()">&#xe82e;</span>
+        </button>
+    </div>
+    <div id="body">
+      <!-- 移动端导航 -->
+      <div class="small-header" id="small-header">
+          <div class="navbar">
+              <div class="navbar-action">
+                  <div class="navbar-action-left">
+                      <button class="navbar-button" id="nav-light"><span class="iconfont">&#xe7ac;</span></button>
+                      <span class="iconfont" onclick="javascript:SearchWidget.open()">&#xe82e;</span>
+                  </div>
+                  <div class="navbar-action-right">
+                      <button class="navbar-button" id="nav-drop"><span class="iconfont">&#xe650;</span></button>
+                  </div>
+              </div>
+              
+              <div class="navbar-dropdown">
+                  <button class="navbar-button navbar-dropup" id="nav-rise"><span>+</span></button>
+                  <h2>页面</h2>
+                  <ul class="widget-list"><li><a href="/" rel="section">首页</a></li><!--菜单--></ul>
+                  <h2>分类</h2>
+                  <div th:with="menu = ${menuFinder.getPrimary()}">
+                    <ul th:with="menuItems = ${menu.menuItems}" class="widget-list">
+                      <!--<li><a href="/" rel="section">首页</a></li>-->
+                          <li th:each="menuItem : ${menuItems}">
+                              <a 
+                                th:href="@{${menuItem.status.href}}" 
+                                th:text="${menuItem.status.displayName}" 
+                                th:class="${#annotations.get(menuItem, 'icon')}"
+                              >
+                              </a>
+                          </li>
+                    </ul>
+                  </div>
+              </div>
+          </div>
+          <span th:text="${site.title}" th:remove="tag"></span>
+      </div>
+
+
